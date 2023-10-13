@@ -13,7 +13,9 @@ export const Heading = () => {
             <h3 className=" text-base sm:text-xl md:text-2xl font-medium">Motion is the place where much <br />
                 Better and faster work happens
             </h3>
-            {isLoading && (<Spinner/>)}
+            {isLoading && (<div className="flex w-full justify-center items-center">
+            <Spinner size="lg" /></div>
+            )}
             {isAuthenticated && !isLoading && (
                 <Button variant={"default"}>
                     Get Started <ArrowRightCircle className="h-4 w-4 ml-2" />
