@@ -1,7 +1,9 @@
 const Footer = () => {
-    return ( <div>
-        
-    </div> );
+    return (
+        <div className="flex items-center w-full p-6 bg-background z-50">
+            Footer|
+        </div>
+    );
 }
- 
+
 export default Footer;
