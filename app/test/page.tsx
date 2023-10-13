@@ -1,7 +1,7 @@
 const testPage = () => {
-    return ( <div>
+    return (<div>
         Hello I am Test Page
-    </div> );
+    </div>);
 }
- // remeber every folder creted in app will be routed
+// remeber every folder creted in app will be routed
 export default testPage;
