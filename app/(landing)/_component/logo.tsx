@@ -12,9 +12,9 @@ const font = Puppies_Play(
 export const Logo =()=>{
     return(<div className="hidden md:flex items-center gap-x-2">
         <Image 
-        src={"./dark/favicon.ico"}
-        width={"40"}
-        height={"40"}
+        src={"/dark/favicon.ico"}
+        width={"20"}
+        height={"20"}
         alt="Logo"/>
     </div>)
 }
