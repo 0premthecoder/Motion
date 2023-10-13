@@ -1,4 +1,4 @@
-"Use Client";
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { ArrowRightCircle } from "lucide-react";
@@ -13,12 +13,12 @@ export const Heading = () => {
             <h3 className=" text-base sm:text-xl md:text-2xl font-medium">Motion is the place where much <br />
                 Better and faster work happens
             </h3>
-            {/* {isLoading && (<Spinner/>)} */}
-            {/* {isAuthenticated && !isLoading && (
+            {isLoading && (<Spinner/>)}
+            {isAuthenticated && !isLoading && (
                 <Button variant={"default"}>
                     Get Started <ArrowRightCircle className="h-4 w-4 ml-2" />
                 </Button>
-            )} */}
+            )}
 
         </div>
     )
