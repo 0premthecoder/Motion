@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRightCircle } from "lucide-react";
 import { useConvexAuth } from "convex/react"
+import { Spinner } from "@/components/spinner";
 export const Heading = () => {
 
     const { isAuthenticated, isLoading } = useConvexAuth()
@@ -12,6 +13,7 @@ export const Heading = () => {
             <h3 className=" text-base sm:text-xl md:text-2xl font-medium">Motion is the place where much <br />
                 Better and faster work happens
             </h3>
+            {isLoading && (<Spinner/>)}
             {isAuthenticated && !isLoading && (
                 <Button variant={"default"}>
                     Get Started <ArrowRightCircle className="h-4 w-4 ml-2" />
