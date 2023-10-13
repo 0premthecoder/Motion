@@ -13,8 +13,9 @@ export const Heading = () => {
             <h3 className=" text-base sm:text-xl md:text-2xl font-medium">Motion is the place where much <br />
                 Better and faster work happens
             </h3>
-            {isLoading && (<div className="flex w-full justify-center items-center">
-            <Spinner size="lg" /></div>
+            {isLoading && (
+            <div className="flex w-full justify-center items-center">
+                <Spinner size="lg" /></div>
             )}
             {isAuthenticated && !isLoading && (
                 <Button variant={"default"}>
