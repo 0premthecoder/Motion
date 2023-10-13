@@ -1,11 +1,13 @@
+"use client"
+
 import Image from "next/image";
-import { Puppies_Play } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const font = Puppies_Play(
+const font = Poppins(
     {
-        subsets: ["vietnamese"],
-        weight: ["400", "400"]
+        subsets: ["latin-ext"],
+        weight: ["400", "600"]
     }
 )
 
