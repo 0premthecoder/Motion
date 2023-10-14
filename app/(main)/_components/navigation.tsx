@@ -6,11 +6,14 @@ import { usePathname } from "next/navigation";
 import { ElementRef, useRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./userItem";
+import { useQuery } from "convex/react"
+import { api } from "@/convex/_generated/api";
 
 
 const Navigation = () => {
     const pathName = usePathname()
     const isMobile = useMediaQuery("(max-width: 768px)")
+    const documents = useQuery(api.documet.get)
 
     const isResizingRef = useRef(false)
     const sidebarRef = useRef<ElementRef<"aside">>(null)
@@ -106,7 +109,9 @@ const Navigation = () => {
                 
             </div>
             <div className=" mt-4">
-                <p>Documets</p>
+                {documents?.map((document)=>{
+                    return <p key={document._id}>{document.title}</p>
+                })}
             </div>
             <div className=" opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute w-1 h-full bg-primary/10 right-0 top-0"
                 onMouseDown={handleMouseDown}
