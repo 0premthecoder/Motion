@@ -19,12 +19,12 @@ const Navbar = () => {
         <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
             {isLoading && (<Spinner/>)}
             {!isAuthenticated && !isLoading && (<>
-                <SignInButton mode="modal">
+                <SignInButton mode="modal" redirectUrl="/documents">
                     <Button variant={"link"}>
                         Sign In
                     </Button>
                 </SignInButton>
-                <SignInButton mode="modal">
+                <SignInButton mode="modal" redirectUrl="/documents">
                     <Button >
                         Get for Free
                     </Button>

@@ -5,6 +5,8 @@ import { ChevronLeftIcon, MenuIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
+import UserItem from "./userItem";
+
 
 const Navigation = () => {
     const pathName = usePathname()
@@ -95,11 +97,13 @@ const Navigation = () => {
         <aside className={cn("group/sidebar h-full overflow-y-auto relative flex w-60 flex-col bg-secondary z-[99999]", isResetting && "transition-all ease-in-out duration-300", isMobile && "w-0")}
             ref={sidebarRef}
         >
+            
             <div onClick={collapse} role="button" className={cn(" h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition", isMobile && "opacity-100")}>
                 <ChevronLeftIcon className="h-6 w-6" />
             </div>
             <div>
-                <p>Actoin Items</p>
+                <UserItem/>
+                
             </div>
             <div className=" mt-4">
                 <p>Documets</p>
@@ -108,6 +112,7 @@ const Navigation = () => {
                 onMouseDown={handleMouseDown}
                 onClick={resetWidth}
             />
+            
         </aside>
         <div
             ref={navbarRef}
@@ -116,6 +121,7 @@ const Navigation = () => {
             <nav className=" bg-transparent px-3 py-4 w-full"  >
                 {isCollapsed && <MenuIcon onClick={resetWidth} className="h-6 w-6 text-muted-foreground" role="button" />}
             </nav>
+            
         </div>
     </>);
 }
