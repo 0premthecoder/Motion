@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SignOutButton, useUser } from "@clerk/clerk-react";
 import { ModeToggle } from "@/components/mode-toggle";
+import Link from "next/link";
 
 const UserItem = () => {
     const { user } = useUser()
@@ -44,7 +45,8 @@ const UserItem = () => {
                     <div className="flex gap-x-2 items-center">
                         <div className="rounded-md bg-secondary p-1">
                             <Avatar className="h-8 w-8">
-                                <AvatarImage src={user?.imageUrl} />
+                                <Link href={"/"}>
+                                <AvatarImage src={user?.imageUrl} /></Link>
                             </Avatar>
                         </div>
                         <div className="space-y-1">
