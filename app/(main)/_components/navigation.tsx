@@ -23,7 +23,7 @@ const Navigation = () => {
 
         isResizingRef.current = true
         document.addEventListener("mousemove", handleMouseMove)
-        // document.addEventListener("mouseup", handleMouseUp)
+        document.addEventListener("mouseup", handleMouseUp)
     }
 
     const handleMouseMove = (e:MouseEvent)=>{
@@ -42,6 +42,7 @@ const Navigation = () => {
     const handleMouseUp = ()=>{
         isResizingRef.current = false
         document.removeEventListener("mousemove", handleMouseMove)
+        document.removeEventListener("mouseup", handleMouseUp)
         
     }
 
