@@ -31,7 +31,7 @@ const Navbar = () => {
                 </SignInButton>
             </>)}
             {isAuthenticated && !isLoading && (<>
-                <Button variant={"link"}>
+                <Button variant={"link"} asChild>
                     <Link href="/documents">
                         Enter on Your Second Brain
                     </Link>

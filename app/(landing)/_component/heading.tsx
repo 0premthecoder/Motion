@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRightCircle } from "lucide-react";
 import { useConvexAuth } from "convex/react"
 import { Spinner } from "@/components/spinner";
+import Link from "next/link";
+import { SignInButton } from "@clerk/clerk-react";
 export const Heading = () => {
 
     const { isAuthenticated, isLoading } = useConvexAuth()
@@ -18,9 +20,16 @@ export const Heading = () => {
                 <Spinner size="lg" /></div>
             )}
             {isAuthenticated && !isLoading && (
-                <Button variant={"default"}>
-                    Get Started <ArrowRightCircle className="h-4 w-4 ml-2" />
+                <Button variant={"default"} asChild>
+                    <Link href={"/documents"}>
+                    Enter <ArrowRightCircle className="h-4 w-4 ml-2" /></Link>
                 </Button>
+            )}
+            {!isAuthenticated && !isLoading && (
+            <SignInButton mode="modal">
+                <Button variant={"default"} >
+                    Get Started <ArrowRightCircle className="h-4 w-4 ml-2" />
+                </Button></SignInButton>
             )}
 
         </div>
