@@ -4,10 +4,15 @@ import Image from "next/image";
 import { SignOutButton, UserButton, useUser } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import { PlusSquareIcon } from "lucide-react";
+import { useMutation } from "convex/react"
+import { api } from "@/convex/_generated/api";
 
 const DocumentsPage = () => {
 
     const { user } = useUser()
+    const create = useMutation(api.documet.create)
+    
+    const 
 
     return ( <div className="h-full flex flex-col items-center justify-center space-y-4">
         <Image 
