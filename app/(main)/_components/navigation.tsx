@@ -46,6 +46,32 @@ const Navigation = () => {
         
     }
 
+    const resetWidth=()=>{
+        if (sidebarRef.current && navbarRef.current){
+            setIsCollapsed(false)
+            setIsResetting(true)
+
+            sidebarRef.current.style.width = isMobile ? "100px": "240px"
+            navbarRef.current.style.setProperty("width",isMobile ? "0" : "calc(100%-240px");
+
+            navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
+            setTimeout(()=>{
+                setIsResetting(false)
+            }, 300)
+        }
+    }
+
+    const collapse = ()=>{
+        if (sidebarRef.current && navbarRef.current){
+            setIsCollapsed(true)
+            setIsResetting(true)
+
+            sidebarRef.current.style.width = "0"
+            navbarRef.current.style.setProperty("width", "100%")
+            navbarRef.current.style.setProperty("left", "0")
+        }
+    }
+
 
     return (<>
         <aside className={cn("group/sidebar h-full overflow-y-auto relative flex w-60 flex-col bg-secondary z-[99999]", isResetting && "transition-all ease-in-out duration-300", isMobile && "w-0")}
@@ -62,7 +88,7 @@ const Navigation = () => {
             </div>
             <div className=" opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute w-1 h-full bg-primary/10 right-0 top-0"
             onMouseDown={handleMouseDown}
-            onClick={()=>{}}
+            onClick={resetWidth}
              />
         </aside>
         <div
