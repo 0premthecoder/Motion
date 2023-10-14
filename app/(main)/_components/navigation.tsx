@@ -1,8 +1,21 @@
 "use client"
 
 import { ChevronLeftIcon } from "lucide-react";
+import { ElementRef, useRef, useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
 
 const Navigation = () => {
+
+    const isMobile = useMediaQuery("(max-width: 768px)")
+
+    const isResizingRef = useRef(false)
+    const sidebarRef = useRef<ElementRef<"aside">>(null)
+    const navbarRef = useRef<ElementRef<"div">>(null)
+
+    const [isResizing, setIsResizing] = useState(false)
+    const [isCollapsed, setIsCollapsed] = useState(isMobile)
+
+
     return (<>
         <aside className="group/sidebar h-full overflow-y-auto relative flex w-60 flex-col bg-secondary z-[99999]"
         >
