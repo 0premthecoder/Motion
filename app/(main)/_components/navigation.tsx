@@ -18,14 +18,7 @@ const Navigation = () => {
     const documents = useQuery(api.document.get)
     const create = useMutation(api.document.create)
     
-    const onCreate = ()=>{
-        const promise = create({ title: "Untitled"})
-        toast.promise(promise,{
-            loading: "Creating a new note...",
-            success: "New note created!",
-            error:"Failed to create a new note "
-        })
-    }
+    
 
     const isResizingRef = useRef(false)
     const sidebarRef = useRef<ElementRef<"aside">>(null)
@@ -107,6 +100,15 @@ const Navigation = () => {
         }
     }
 
+    const handleCreate = ()=>{
+        const promise = create({ title: "Untitled"})
+        toast.promise(promise,{
+            loading: "Creating a new note...",
+            success: "New note created!",
+            error:"Failed to create a new note "
+        })
+    }
+
 
     return (<>
         <aside className={cn("group/sidebar h-full overflow-y-auto relative flex w-60 flex-col bg-secondary z-[99999]", isResetting && "transition-all ease-in-out duration-300", isMobile && "w-0")}
@@ -118,7 +120,7 @@ const Navigation = () => {
             </div>
             <div>
                 <UserItem/>
-                <Item onClick={()=>{}} icon={PlusCircle} label="New Page" />
+                <Item onClick={handleCreate} icon={PlusCircle} label="New Page" />
             </div>
             <div className=" mt-4">
                 {documents?.map((document)=>{
