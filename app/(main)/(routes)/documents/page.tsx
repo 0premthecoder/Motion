@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import { SignOutButton, UserButton, useUser } from "@clerk/clerk-react";
+import {  useUser } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import { PlusSquareIcon } from "lucide-react";
 import { toast } from "sonner";
@@ -13,7 +13,7 @@ import { api } from "@/convex/_generated/api";
 const DocumentsPage = () => {
 
     const { user } = useUser()
-    const create = useMutation(api.documet.create)
+    const create = useMutation(api.document.create)
     
     const onCreate = ()=>{
         const promise = create({ title: "Untitled"})
