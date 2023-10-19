@@ -45,6 +45,10 @@ export const archive = mutation({
         const document = await ctx.db.patch(args.id,{
             isArchived: true,
         })
+
+        recursiveArchive(args.id)
+
+        return document
     }
 })
 
