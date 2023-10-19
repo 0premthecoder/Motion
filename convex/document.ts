@@ -21,7 +21,7 @@ export const archive = mutation({
             throw new Error("Not Found")
         }
 
-        if(existingDocument._id !== userId){
+        if(existingDocument.userId !== userId){
             throw new Error("Unauthorized")
         }
 
