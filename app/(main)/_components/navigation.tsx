@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { ChevronLeftIcon, MenuIcon, PlusCircle, Search, Settings2 } from "lucide-react";
+import { ChevronLeftIcon, MenuIcon, Plus, PlusCircle, Search, Settings2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -11,7 +11,10 @@ import { api } from "@/convex/_generated/api";
 import Item from "./item";
 import { toast } from "sonner";
 import DocumentList from "./documentList";
-
+import { Popover, 
+    PopoverTrigger,
+    PopoverContent,
+ } from "@radix-ui/react-popover";
 
 const Navigation = () => {
     const pathName = usePathname()
@@ -127,6 +130,7 @@ const Navigation = () => {
             </div>
             <div className=" mt-4">
                 <DocumentList/>
+                <Item onClick={handleCreate} icon={Plus} label="Add a page"/>
             </div>
             <div className=" opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute w-1 h-full bg-primary/10 right-0 top-0"
                 onMouseDown={handleMouseDown}
