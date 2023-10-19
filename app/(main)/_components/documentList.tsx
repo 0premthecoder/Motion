@@ -34,6 +34,10 @@ const DocumentList = ({
         parenDocument: parentDocumentId
     })
 
+    const onReDirect = (documentId: string)=>{
+
+    }
+
     return ( <div className="">
         
     </div> );
