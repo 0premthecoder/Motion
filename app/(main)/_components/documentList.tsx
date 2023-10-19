@@ -30,7 +30,9 @@ const DocumentList = ({
         }))
     }
 
-    const documents = useQuery(api)
+    const documents = useQuery(api.document.getSidebar,{
+        parenDocument: parentDocumentId
+    })
 
     return ( <div className="">
         
