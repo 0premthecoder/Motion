@@ -61,7 +61,7 @@ const Item = ({ id,
                 <kbd className=" ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
                     <span className=" text-xs ">
                     &#8984;
-                    </span>k
+                    </span>K
                 </kbd>
             )}
 
@@ -69,3 +69,11 @@ const Item = ({ id,
 }
 
 export default Item;
+
+Item.Skeleton = function ItemSkeleton({level}: {level?: number}){
+    return(
+        <div style={{
+            paddingLeft: level ? `${(level * 12)+25}px`: '12px'
+        }}></div>
+    )
+}
