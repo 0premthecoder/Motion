@@ -6,6 +6,7 @@ import { useQuery } from "convex/react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import Item from "./item";
+import { cn } from "@/lib/utils";
 
 interface DocumentListProps{
     parentDocumentId?: Id<"documents">
@@ -54,6 +55,9 @@ const DocumentList = ({
             style={{
                 paddingLeft: level ? `${(level * 12)+25}px`: undefined
             }}
+            className={cn(
+                "hidden text-sm font-medium to-muted-foreground/80", expand &&" last:block", level ===0 && "hidden"
+            )}
         >No pages Inside</p>
     </> );
 }
