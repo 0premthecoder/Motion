@@ -128,9 +128,14 @@ const Navigation = () => {
                 <Item label="Setting" icon={ Settings2}  onClick={()=>{}}/>
                 <Item onClick={handleCreate} icon={PlusCircle} label="New Page" />
             </div>
-            <div className=" mt-4">
+            <div className="mt-4">
                 <DocumentList/>
                 <Item onClick={handleCreate} icon={Plus} label="Add a page"/>
+                <Popover>
+                    <PopoverTrigger className="w-full mt-4">
+
+                    </PopoverTrigger>
+                </Popover>
             </div>
             <div className=" opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute w-1 h-full bg-primary/10 right-0 top-0"
                 onMouseDown={handleMouseDown}
