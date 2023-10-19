@@ -3,10 +3,11 @@
 import { api } from "@/convex/_generated/api";
 import { Doc, Id } from "@/convex/_generated/dataModel";
 import { useQuery } from "convex/react";
-import { useParams, useRouter } from "next/navigation";
+import { redirect, useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import Item from "./item";
 import { cn } from "@/lib/utils";
+import { FileIcon } from "lucide-react";
 
 interface DocumentListProps{
     parentDocumentId?: Id<"documents">
@@ -59,6 +60,11 @@ const DocumentList = ({
                 "hidden text-sm font-medium to-muted-foreground/80", expand &&" last:block", level ===0 && "hidden"
             )}
         >No pages Inside</p>
+        {documents.map((document)=>{
+            <div key={document._id}>
+                <Item id={document._id} onClick={()=> redirect(document._id)} label={document.title} icon={FileIcon} documentIcon={document.icon}/>
+            </div>
+        })}
     </> );
 }
  
