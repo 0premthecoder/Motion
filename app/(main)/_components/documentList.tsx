@@ -35,7 +35,7 @@ const DocumentList = ({
     })
 
     const onReDirect = (documentId: string)=>{
-
+        router.push(`/documests/${documentId}`)
     }
 
     return ( <div className="">
