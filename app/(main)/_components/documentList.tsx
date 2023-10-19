@@ -42,12 +42,16 @@ const DocumentList = ({
     if(documents === undefined){
         return(<>
         <Item.Skeleton level={level}/>
+        {level === 0 && <>
+            <Item.Skeleton level={level}/>
+            <Item.Skeleton level={level}/>
+        </>}
         </>)
     }
 
-    return ( <div className="">
-        
-    </div> );
+    return ( <>
+        <p>No pages Inside</p>
+    </> );
 }
  
 export default DocumentList;
