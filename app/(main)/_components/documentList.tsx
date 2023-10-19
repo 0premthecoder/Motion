@@ -22,7 +22,9 @@ const DocumentList = ({
 
     const onExpand = (documentId: string) =>{
         setExpand(prevExpanded=>({
-            ...prevExpanded
+            ...prevExpanded,
+            [documentId]:  !prevExpanded[documentId]
+
         }))
     }
 
