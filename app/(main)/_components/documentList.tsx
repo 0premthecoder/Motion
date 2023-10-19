@@ -5,6 +5,7 @@ import { Doc, Id } from "@/convex/_generated/dataModel";
 import { useQuery } from "convex/react";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
+import Item from "./item";
 
 interface DocumentListProps{
     parentDocumentId?: Id<"documents">
@@ -36,6 +37,12 @@ const DocumentList = ({
 
     const onReDirect = (documentId: string)=>{
         router.push(`/documests/${documentId}`)
+    }
+
+    if(documents === undefined){
+        return(<>
+        <Item.Skeleton level={level}/>
+        </>)
     }
 
     return ( <div className="">
