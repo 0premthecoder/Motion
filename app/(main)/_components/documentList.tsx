@@ -9,7 +9,7 @@ import Item from "./item";
 
 interface DocumentListProps{
     parentDocumentId?: Id<"documents">
-    level?:Number
+    level?:number
     data?:Doc<"documents">[]
 
 }
