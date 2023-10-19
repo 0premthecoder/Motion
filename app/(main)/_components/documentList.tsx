@@ -50,7 +50,11 @@ const DocumentList = ({
     }
 
     return ( <>
-        <p>No pages Inside</p>
+        <p
+            style={{
+                paddingLeft: level ? `${(level * 12)+25}px`: undefined
+            }}
+        >No pages Inside</p>
     </> );
 }
  
