@@ -65,6 +65,9 @@ const DocumentList = ({
                 <Item id={document._id} onClick={()=> redirect(document._id)} label={document.title} icon={FileIcon} documentIcon={document.icon} active={params.documentId === document._id } level={level} onExpand={()=> onExpand(document._id)} 
                 expanded={expand[document._id]}
                 />
+                {expand[document._id] && (
+                    <DocumentList parentDocumentId={document._id} level={level + 1}/>
+        )}
             </div>
         })}
     </> );

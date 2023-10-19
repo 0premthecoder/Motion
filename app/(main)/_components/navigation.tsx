@@ -1,21 +1,22 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { ChevronLeftIcon, MenuIcon, PlusCircle, Search } from "lucide-react";
+import { ChevronLeftIcon, MenuIcon, PlusCircle, Search, Settings2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./userItem";
-import { useQuery, useMutation } from "convex/react"
+import { useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api";
 import Item from "./item";
 import { toast } from "sonner";
+import DocumentList from "./documentList";
 
 
 const Navigation = () => {
     const pathName = usePathname()
     const isMobile = useMediaQuery("(max-width: 768px)")
-    const documents = useQuery(api.document.get)
+    // const documents = useQuery(api.document.get)
     const create = useMutation(api.document.create)
     
     
@@ -121,12 +122,11 @@ const Navigation = () => {
             <div>
                 <UserItem/>
                 <Item label="Search" icon={Search} isSearch onClick={()=>{}}/>
+                <Item label="Setting" icon={ Settings2}  onClick={()=>{}}/>
                 <Item onClick={handleCreate} icon={PlusCircle} label="New Page" />
             </div>
             <div className=" mt-4">
-                {documents?.map((document)=>{
-                    return <p key={document._id}>{document.title}</p>
-                })}
+                <DocumentList/>
             </div>
             <div className=" opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute w-1 h-full bg-primary/10 right-0 top-0"
                 onMouseDown={handleMouseDown}
