@@ -1,7 +1,7 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { ChevronLeftIcon, MenuIcon, Plus, PlusCircle, Search, Settings2 } from "lucide-react";
+import { ChevronLeftIcon, MenuIcon, Plus, PlusCircle, Search, Settings2, Trash2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { ElementRef, useRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -133,8 +133,11 @@ const Navigation = () => {
                 <Item onClick={handleCreate} icon={Plus} label="Add a page"/>
                 <Popover>
                     <PopoverTrigger className="w-full mt-4">
-
+                        <Item label="trash" icon={Trash2}/>
                     </PopoverTrigger>
+                    <PopoverContent side={isMobile ? "bottom" : "right"} className="p-0 w-72">
+                        <p>AAja Na trash me</p>
+                    </PopoverContent>
                 </Popover>
             </div>
             <div className=" opacity-0 group-hover/sidebar:opacity-100 transition cursor-ew-resize absolute w-1 h-full bg-primary/10 right-0 top-0"
