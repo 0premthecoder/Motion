@@ -1,9 +1,13 @@
 "use client"
 
 import { Skeleton } from "@/components/ui/skeleton"
+import { api } from "@/convex/_generated/api"
 import { Id } from "@/convex/_generated/dataModel"
 import { cn } from "@/lib/utils"
+import { useMutation } from "convex/react"
 import { ChevronDown, ChevronRight, LucideIcon, Plus } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 interface ItemProps {
     id?: Id<"documents">
@@ -30,8 +34,11 @@ const Item = ({ id,
     onClick,
     icon:
     Icon }: ItemProps) => {
+    console.log(level)
 
     const ChevronIcon = expanded ? ChevronDown : ChevronRight
+    const router = useRouter()
+    const create = useMutation(api.document.create)
 
     const handleExpand = (
         event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -40,12 +47,33 @@ const Item = ({ id,
         onExpand?.()
     }
 
+    const onCreate = (
+        event: React.MouseEvent<HTMLDivElement, MouseEvent>
+    )=>{
+        event.stopPropagation()
+        if (!id)return
+        const promise = create({title:"untitled", parentDocument:id})
+            .then((documentId)=>{
+                if(!expanded){
+                    onExpand?.()
+                }
+                // router.push(`/documents/${documentId}`)
+            })
+
+            toast.promise(promise, {
+                loading: "Creating..." ,
+                success:"New Note created",
+                error:"Failed to Create"
+            })
+        
+    }
+
     return (
         <div
             onClick={onClick}
             role="button"
             style={{
-                paddingLeft: level ? `${(level * 12) + 12} ` : "12px"
+                paddingLeft: level ? `${(level * 12) + 12}px` : "12px"
             }}
             className={cn("group min-h-[27px] text-sm py-1 pr-1 w-full hover:bg-primary/5 flex items-center text-muted-foreground font-medium",
                 active && "bg-primary/5 text-primary")}>
@@ -57,7 +85,7 @@ const Item = ({ id,
             )}
 
             {documentIcon ? (
-                <div className="">
+                <div className="shrink-0 mr-2 text-[18px]">
                     {documentIcon}
                 </div>
             ) : (
@@ -74,7 +102,10 @@ const Item = ({ id,
             )}
             {!!id && (
                 <div className="ml-auto flex items-center gap-x-2">
-                    <div className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600">
+                    <div 
+                    role="button"
+                    onClick={onCreate}
+                     className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600">
                         <Plus className="h-4 w-4 text-muted-foreground"/>
                     </div>
                 </div>
