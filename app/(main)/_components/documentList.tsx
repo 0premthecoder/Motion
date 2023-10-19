@@ -20,7 +20,7 @@ const DocumentList = ({
     const router = useRouter()
     const [expand, setExpand] = useState<Record<string,boolean>>({})
 
-    const onExpand
+    const onExpand = (documentId: string)
 
     return ( <div className="">
         
