@@ -15,6 +15,7 @@ import { Popover,
     PopoverTrigger,
     PopoverContent,
  } from "@radix-ui/react-popover";
+import TrashBox from "./trashbox";
 
 const Navigation = () => {
     const pathName = usePathname()
@@ -136,7 +137,7 @@ const Navigation = () => {
                         <Item label="trash" icon={Trash2}/>
                     </PopoverTrigger>
                     <PopoverContent side={isMobile ? "bottom" : "right"} className="p-0 w-72">
-                        <p>AAja Na trash me</p>
+                        <TrashBox/>
                     </PopoverContent>
                 </Popover>
             </div>
