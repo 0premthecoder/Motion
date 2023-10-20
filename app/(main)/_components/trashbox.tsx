@@ -85,7 +85,7 @@ const TrashBox = () => {
                             >
                                 <Undo className="h-4 w-4 text-muted-foreground"/>
                             </div>
-                            <div  className="rounded-sm hover:bg-neutral-200 p-2" role="button" onClick={()=>{}}>
+                            <div  className="rounded-sm hover:bg-neutral-200 p-2" role="button" onClick={()=>{onRemove(document._id)}}>
                                 <Trash className="h-4 w-4 text-muted-foreground"/>
                             </div>
 
