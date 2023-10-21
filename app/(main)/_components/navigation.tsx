@@ -16,15 +16,14 @@ import { Popover,
     PopoverContent,
  } from "@radix-ui/react-popover";
 import TrashBox from "./trashbox";
+import { useSearch } from "@/hooks/use-search";
 
 const Navigation = () => {
     const pathName = usePathname()
     const isMobile = useMediaQuery("(max-width: 768px)")
     // const documents = useQuery(api.document.get)
     const create = useMutation(api.document.create)
-    
-    
-
+    const search = useSearch()
     const isResizingRef = useRef(false)
     const sidebarRef = useRef<ElementRef<"aside">>(null)
     const navbarRef = useRef<ElementRef<"div">>(null)
@@ -119,13 +118,12 @@ const Navigation = () => {
         <aside className={cn("group/sidebar h-full overflow-y-auto relative flex w-60 flex-col bg-secondary z-[99999]", isResetting && "transition-all ease-in-out duration-300", isMobile && "w-0")}
             ref={sidebarRef}
         >
-            
             <div onClick={collapse} role="button" className={cn(" h-6 w-6 text-muted-foreground rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600 absolute top-3 right-2 opacity-0 group-hover/sidebar:opacity-100 transition", isMobile && "opacity-100")}>
                 <ChevronLeftIcon className="h-6 w-6" />
             </div>
             <div>
                 <UserItem/>
-                <Item label="Search" icon={Search} isSearch onClick={()=>{}}/>
+                <Item label="Search" icon={Search} isSearch onClick={search.onOpen}/>
                 <Item label="Setting" icon={ Settings2}  onClick={()=>{}}/>
                 <Item onClick={handleCreate} icon={PlusCircle} label="New Page" />
             </div>
@@ -145,7 +143,6 @@ const Navigation = () => {
                 onMouseDown={handleMouseDown}
                 onClick={resetWidth}
             />
-            
         </aside>
         <div
             ref={navbarRef}
