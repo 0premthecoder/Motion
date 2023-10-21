@@ -39,7 +39,7 @@ const DocumentsPage = () => {
             className="hidden dark:block"
             />
         <h2 className="text-lg font-medium">
-            Welcome to {user?.firstName}&apos; Motion
+            Welcome to {user?.firstName}&apos;s Motion
         </h2>
         <Button onClick={onCreate}>
             Create New Note
