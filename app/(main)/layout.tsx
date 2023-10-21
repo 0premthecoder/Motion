@@ -20,9 +20,9 @@ const MainLayout = ({ children }: {
     if (!isAuthenticated) {
         return redirect("/")
     }
-    return (<div className="h-full flex dark:bg-[#1f1f1f}">
+    return (<div className="h-full flex dark:bg-[#1f1f1f]}">
         <Navigation/>
-        <main className="flex-1 h-full overflow-y-auto">
+        <main className="flex-1 h-full overflow-y-auto dark:bg-[#1f1f1f]">
         <SearchCommand/>
             {children}
         </main>
