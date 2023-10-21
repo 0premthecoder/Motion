@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ChevronLeftIcon, MenuIcon, Plus, PlusCircle, Search, Settings2, Trash2 } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { ElementRef, useRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./userItem";
@@ -19,12 +19,14 @@ import TrashBox from "./trashbox";
 
 import { useSearch } from "@/hooks/use-search";
 import { useSettings } from "@/hooks/use-settings";
+import { Navbar } from "./navbar";
 
 const Navigation = () => {
     const pathName = usePathname()
     const isMobile = useMediaQuery("(max-width: 768px)")
     // const documents = useQuery(api.document.get)
     const create = useMutation(api.document.create)
+    const params = useParams()
     
     const isResizingRef = useRef(false)
     const sidebarRef = useRef<ElementRef<"aside">>(null)
@@ -154,9 +156,12 @@ const Navigation = () => {
             ref={navbarRef}
             className={cn("absolute top-0 z-[99999] left-60 w-[calc(100%-240px)]", isResetting && "transition-all ease-in-out duration-300", isMobile && "left-0 w-full")}
         >
+            {!!params.documentId ? (
+                <Navbar isCollapsed={isCollapsed} onResetWidth={resetWidth}/>
+            ): 
             <nav className=" bg-transparent px-3 py-4 w-full"  >
                 {isCollapsed && <MenuIcon onClick={resetWidth} className="h-6 w-6 text-muted-foreground" role="button" />}
-            </nav>
+            </nav>}
             
         </div>
     </>);
