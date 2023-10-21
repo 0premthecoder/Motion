@@ -14,7 +14,7 @@ import DocumentList from "./documentList";
 import { Popover, 
     PopoverTrigger,
     PopoverContent,
- } from "@radix-ui/react-popover";
+ } from "@/components/ui/popover";
 import TrashBox from "./trashbox";
 
 import { useSearch } from "@/hooks/use-search";
