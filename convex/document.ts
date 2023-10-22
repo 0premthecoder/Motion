@@ -253,7 +253,9 @@ export const getById = query({
             throw new Error("UnAuthorized")  
         }
 
+        console.log(document)
 
-        
+        return document
+
     }
  })
