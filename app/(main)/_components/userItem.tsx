@@ -51,7 +51,8 @@ const UserItem = () => {
                         </div>
                         <div className="space-y-1">
                             <p className="text-sm line-clamp-1">
-                                {user?.fullName}&apos;s Motion
+                            <Link href={"/documents"}>
+                                {user?.fullName}&apos;s Motion</Link>
                             </p>
                         </div>
                         <ModeToggle/>
