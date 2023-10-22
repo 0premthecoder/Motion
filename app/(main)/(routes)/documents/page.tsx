@@ -11,7 +11,6 @@ import { api } from "@/convex/_generated/api";
 
 
 const DocumentsPage = () => {
-
     const { user } = useUser()
     const create = useMutation(api.document.create)
     
