@@ -42,5 +42,8 @@ export const Navbar = ({
                 <Title initialData={document}/>
             </div>
         </nav>
+        {document.isArchived && (
+            <Banner documentId={document._id}/>
+        )}
     </>)
 }
