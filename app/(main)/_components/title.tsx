@@ -47,7 +47,10 @@ const Title = ({ initialData }: TitleProps) => {
         }
     }
 
-    return (<div className="flex items-center gap-x-1">
+    return (
+        
+    
+    <div className="flex items-center gap-x-1">
         {!!initialData.icon && <p> {initialData.icon}</p>}
         {isEditing ? <input ref={inputRef}
             onClick={enableInput}
