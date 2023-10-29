@@ -4,6 +4,9 @@ import { Doc } from "@/convex/_generated/dataModel";
 import { IconPicker } from "./icon-picker";
 import { Button } from "./ui/button";
 import { ImageIcon, SmileIcon, X } from "lucide-react";
+import { ElementRef, useRef, useState } from "react";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 interface toolbarProps {
     initialData: Doc<"documents">
@@ -12,6 +15,12 @@ interface toolbarProps {
 }
 
 const Toolbar = ({ initialData, preview }: toolbarProps) => {
+
+    const inputRef = useRef<ElementRef<"textarea">>(null);
+    const [isEditing, setIsEditing] = useState(false)
+    const [value, setValue] = useState(initialData.title)
+    const update = useMutation(api.document.update)
+
     return (<div className="pl-[54px] gropu relative"> {!!initialData && !preview &&
         <div className="flex items-center gap-x-2 group/icon pt-6">
             <IconPicker onChange={() => { }}>
@@ -33,14 +42,15 @@ const Toolbar = ({ initialData, preview }: toolbarProps) => {
         {!!initialData && !preview &&
             <IconPicker asChild onChange={()=>{}}>
                 <Button className=" text-muted-foreground text-xs" variant={"outline"} size={"sm"}>
-                    <SmileIcon className="h-4 w-4 mr-2"/>
+                    <SmileIcon className="h-4 w-4 mr-2"/> 
                     Add Icon
                 </Button>
             </IconPicker>
         }
         {!initialData.coverImage && !preview && (
-            <Button className="text-muted-foreground text-xs">
+            <Button onClick={()=>{}} className="text-muted-foreground text-xs" variant={"outline"} size={"sm"}>
                 <ImageIcon className="h-4 m-4 mr-2"/>
+                Add Cover
             </Button>
         )}
 
