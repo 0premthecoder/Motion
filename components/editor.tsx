@@ -7,7 +7,7 @@ import { useTheme } from "next-themes"
 import { useEdgeStore } from "@/lib/edgestore"
 
 interface editorProps {
-    onChange:(value: string)=> void
+    onChange?:(value: string)=> void
     initialContent?:string
     editable?: boolean
 }
@@ -29,7 +29,7 @@ const Editor = ({onChange,initialContent,editable}:editorProps) => {
         editable,
         initialContent: initialContent ? JSON.parse(initialContent) as PartialBlock[] : undefined,
         onEditorContentChange(editor) {
-            onChange(JSON.stringify(editor.topLevelBlocks, null, 2))
+            if(onChange) onChange(JSON.stringify(editor.topLevelBlocks, null, 2))
         },
         uploadFile: handleUpload
     })

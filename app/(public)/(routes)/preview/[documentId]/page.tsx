@@ -44,19 +44,11 @@ const DocumentIdPage = ({ params }: DocumentIdPageProps) => {
         return (<div>Not found</div>)
     }
 
-    const onChange = (content: string)=>{
-        update({
-            id:params.documentId,
-            content
-        })
-    }
-
     return (<div className="pb-40">
         <Cover preview url={document.coverImage}/>
         <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
             <Toolbar preview  initialData={document}/>
             <Editor editable={false}
-                onChange={onChange}
                 initialContent={document.content}
                 />
             
