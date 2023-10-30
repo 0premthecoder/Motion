@@ -14,7 +14,6 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
     DropdownMenuItem,
-    DropdownMenuLabel
 } from "@/components/ui/dropdown-menu";
 import { useUser } from "@clerk/clerk-react"
 
@@ -68,7 +67,7 @@ const Item = ({ id,
                 if (!expanded) {
                     onExpand?.()
                 }
-                // router.push(`/documents/${documentId}`)
+                router.push(`/documents/${documentId}`)
             })
 
         toast.promise(promise, {
@@ -84,6 +83,7 @@ const Item = ({ id,
             event.stopPropagation()
             if (!id) return
             const promise = archive({id})
+                .then((documentId)=>router.push(`documents/${documentId}`))
             toast.promise(promise,{
                 loading:"Moving to trash...",
                 error:"Unable to Move",

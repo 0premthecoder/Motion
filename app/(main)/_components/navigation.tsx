@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ChevronLeftIcon, MenuIcon, Plus, PlusCircle, Search, Settings2, Trash2 } from "lucide-react";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { ElementRef, useRef, useState, useEffect } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./userItem";
@@ -27,6 +27,8 @@ const Navigation = () => {
     // const documents = useQuery(api.document.get)
     const create = useMutation(api.document.create)
     const params = useParams()
+
+    const router = useRouter()
     
     const isResizingRef = useRef(false)
     const sidebarRef = useRef<ElementRef<"aside">>(null)
@@ -114,11 +116,13 @@ const Navigation = () => {
 
     const handleCreate = ()=>{
         const promise = create({ title: "Untitled"})
+            .then((documentId)=>router.push(`/documents/${documentId}`))
         toast.promise(promise,{
             loading: "Creating a new note...",
             success: "New note created!",
             error:"Failed to create a new note "
         })
+        
     }
     return (<>
         <aside className={cn("group/sidebar h-full overflow-y-auto relative flex w-60 flex-col bg-secondary z-[99999]", isResetting && "transition-all ease-in-out duration-300", isMobile && "w-0")}
