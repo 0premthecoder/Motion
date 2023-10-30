@@ -5,7 +5,6 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
     DropdownMenuItem,
-    DropdownMenuLabel
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/clerk-react";
@@ -14,6 +13,7 @@ import { api } from "@/convex/_generated/api";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { MoreHorizontalIcon, Trash } from "lucide-react";
+
 
 interface MenuProps {
     documentId: Id<"documents">
@@ -47,6 +47,7 @@ const Menu = ({documentId}:MenuProps) => {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-60" align="end" alignOffset={8} forceMount>
                 <DropdownMenuItem onClick={onArchive}><Trash className="h-4 w-4 mr-1"/> Delete</DropdownMenuItem>
+                
                 <DropdownMenuSeparator/>
                 <div className="text-xs text-muted-foreground">
                     Last Edited by : {user.user?.fullName}
