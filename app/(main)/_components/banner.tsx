@@ -40,7 +40,7 @@ const Banner = ({ documentId }: BannerProps) => {
     }
 
     return (
-        <div className="w-full bg-rose-500 text-center text-sm p-2 text-white flex item-center justify-center gap-x-2"><p>This page in thrash</p>
+        <div className="w-full bg-rose-500 text-center text-lg p-2 text-white flex item-center justify-center gap-x-2"><p>This page in thrash</p>
             <Button onClick={onRestore} className="border-white bg-transparent
                 hover:bg-primery/5 text-white hover:text-white
                 p-1 px-2 h-auto font-normal" variant={"outline"}>  Restore Page  </Button>
