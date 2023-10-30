@@ -91,8 +91,8 @@ const Navigation = () => {
             setIsResetting(true)
 
             sidebarRef.current.style.width = isMobile ? "100%" : "240px"
-            navbarRef.current.style.setProperty("width", isMobile ? "0" : "calc(100%-240px");
-
+            // navbarRef.current.style.setProperty("width", isMobile ? "0" : "calc(100%-240px)");
+            navbarRef.current.style.setProperty("width", isMobile ? "0" : "calc(100% - 240px)")
             navbarRef.current.style.setProperty("left", isMobile ? "100%" : "240px");
             setTimeout(() => {
                 setIsResetting(false)
@@ -157,7 +157,7 @@ const Navigation = () => {
         </aside>
         <div
             ref={navbarRef}
-            className={cn("absolute top-0 z-[99999] left-60 w-[calc(100%-240px)]", isResetting && "transition-all ease-in-out duration-300", isMobile && "left-0 w-full")}
+            className={cn("absolute top-0 z-[99999] left-60 w-[calc(100%-240px)]", isResetting && "transition-all ease-in-out duration-300", isMobile ? "left-0 w-full": "")}
         >
             {!!params.documentId ? (
                 <Navbar isCollapsed={isCollapsed} onResetWidth={resetWidth}/>
