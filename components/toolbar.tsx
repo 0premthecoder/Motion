@@ -78,10 +78,11 @@ const Toolbar = ({ initialData, preview }: toolbarProps) => {
                 <p className="text-6xl hover:opacity-75 transition"
                 >{initialData.icon}</p>
             </IconPicker>
+            {!!initialData.icon &&(
             <Button onClick={onRemoveIcon} className="rouded-full opacity-0 group-hover/icon:opacity-100 transition text-muted-foreground text-xs" variant={"outline"} size="icon">
                 <X className="h-4 w-4" />
 
-            </Button>
+            </Button>)}
         </div>}
         {!!initialData.icon && preview && (
             <p className="text-6xl pt-6">
