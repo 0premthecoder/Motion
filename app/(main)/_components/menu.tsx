@@ -46,7 +46,7 @@ const Menu = ({documentId}:MenuProps) => {
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-60" align="end" alignOffset={8} forceMount>
-                <DropdownMenuItem onClick={onArchive}><Trash className="h-4 w-4"/> Delete</DropdownMenuItem>
+                <DropdownMenuItem onClick={onArchive}><Trash className="h-4 w-4 mr-1"/> Delete</DropdownMenuItem>
                 <DropdownMenuSeparator/>
                 <div className="text-xs text-muted-foreground">
                     Last Edited by : {user.user?.fullName}

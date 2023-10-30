@@ -90,7 +90,7 @@ const Toolbar = ({ initialData, preview }: toolbarProps) => {
         )}
 
         <div className="opacity-0 group-hover:opacity-100 flex items-center gap-x-1 py-4">
-        {!!initialData && !preview &&
+        {!initialData.icon && !preview &&
             <IconPicker asChild onChange={onIconSelect}>
                 <Button className=" text-muted-foreground text-xs" variant={"outline"} size={"sm"}>
                     <SmileIcon className="h-4 w-4 mr-2"/> 
